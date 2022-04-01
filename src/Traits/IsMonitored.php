@@ -1,9 +1,9 @@
 <?php
 
-namespace romanzipp\QueueMonitor\Traits;
+namespace celostad\QueueMonitor\Traits;
 
-use romanzipp\QueueMonitor\Models\Contracts\MonitorContract;
-use romanzipp\QueueMonitor\Services\QueueMonitor;
+use celostad\QueueMonitor\Models\Contracts\MonitorContract;
+use celostad\QueueMonitor\Services\QueueMonitor;
 
 /**
  * @mixin \Illuminate\Queue\InteractsWithQueue

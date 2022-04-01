@@ -4,16 +4,16 @@ return [
     /*
      * Set the table to be used for monitoring data.
      */
-    'table' => 'queue_monitor',
+    'table' => 'queue_apipartner_monitor',
     'connection' => null,
 
     /*
      * Set the model used for monitoring.
      * If using a custom model, be sure to implement the
-     *   romanzipp\QueueMonitor\Models\Contracts\MonitorContract
+     *   celostad\QueueMonitor\Models\Contracts\MonitorContract
      * interface or extend the base model.
      */
-    'model' => \romanzipp\QueueMonitor\Models\Monitor::class,
+    'model' => \celostad\QueueMonitor\Models\Monitor::class,
 
     /*
      * Specify the max character length to use for storing exception backtraces.
@@ -38,12 +38,12 @@ return [
         /**
          * Allow the deletion of single monitor items.
          */
-        'allow_deletion' => true,
+        'allow_deletion' => false,
 
         /**
          * Allow purging all monitor entries.
          */
-        'allow_purge' => true,
+        'allow_purge' => false,
 
         'show_metrics' => true,
 

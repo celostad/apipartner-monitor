@@ -1,6 +1,6 @@
 <?php
 
-namespace romanzipp\QueueMonitor\Tests\Support;
+namespace celostad\QueueMonitor\Tests\Support;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;

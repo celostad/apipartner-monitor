@@ -1,8 +1,8 @@
 <?php
 
-namespace romanzipp\QueueMonitor\Tests\Support;
+namespace celostad\QueueMonitor\Tests\Support;
 
-use romanzipp\QueueMonitor\Traits\IsMonitored;
+use celostad\QueueMonitor\Traits\IsMonitored;
 
 class MonitoredPartiallyKeptJob extends BaseJob
 {

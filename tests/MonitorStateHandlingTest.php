@@ -1,11 +1,11 @@
 <?php
 
-namespace romanzipp\QueueMonitor\Tests;
+namespace celostad\QueueMonitor\Tests;
 
-use romanzipp\QueueMonitor\Models\Monitor;
-use romanzipp\QueueMonitor\Tests\Support\IntentionallyFailedException;
-use romanzipp\QueueMonitor\Tests\Support\MonitoredFailingJob;
-use romanzipp\QueueMonitor\Tests\Support\MonitoredFailingJobWithHugeExceptionMessage;
+use celostad\QueueMonitor\Models\Monitor;
+use celostad\QueueMonitor\Tests\Support\IntentionallyFailedException;
+use celostad\QueueMonitor\Tests\Support\MonitoredFailingJob;
+use celostad\QueueMonitor\Tests\Support\MonitoredFailingJobWithHugeExceptionMessage;
 
 class MonitorStateHandlingTest extends TestCase
 {

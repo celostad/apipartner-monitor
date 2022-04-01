@@ -1,16 +1,16 @@
 <?php
 
-namespace romanzipp\QueueMonitor\Controllers\Payloads;
+namespace celostad\QueueMonitor\Controllers\Payloads;
 
 final class Metrics
 {
     /**
-     * @var \romanzipp\QueueMonitor\Controllers\Payloads\Metric[]
+     * @var \celostad\QueueMonitor\Controllers\Payloads\Metric[]
      */
     public $metrics = [];
 
     /**
-     * @return \romanzipp\QueueMonitor\Controllers\Payloads\Metric[]
+     * @return \celostad\QueueMonitor\Controllers\Payloads\Metric[]
      */
     public function all(): array
     {

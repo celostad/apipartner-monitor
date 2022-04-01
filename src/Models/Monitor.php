@@ -1,6 +1,6 @@
 <?php
 
-namespace romanzipp\QueueMonitor\Models;
+namespace celostad\QueueMonitor\Models;
 
 use Carbon\CarbonInterval;
 use Exception;
@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Carbon;
-use romanzipp\QueueMonitor\Models\Contracts\MonitorContract;
+use celostad\QueueMonitor\Models\Contracts\MonitorContract;
 use Throwable;
 
 /**

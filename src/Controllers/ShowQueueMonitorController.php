@@ -1,16 +1,16 @@
 <?php
 
-namespace romanzipp\QueueMonitor\Controllers;
+namespace celostad\QueueMonitor\Controllers;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
-use romanzipp\QueueMonitor\Controllers\Payloads\Metric;
-use romanzipp\QueueMonitor\Controllers\Payloads\Metrics;
-use romanzipp\QueueMonitor\Models\Contracts\MonitorContract;
-use romanzipp\QueueMonitor\Services\QueueMonitor;
+use celostad\QueueMonitor\Controllers\Payloads\Metric;
+use celostad\QueueMonitor\Controllers\Payloads\Metrics;
+use celostad\QueueMonitor\Models\Contracts\MonitorContract;
+use celostad\QueueMonitor\Services\QueueMonitor;
 
 class ShowQueueMonitorController
 {
@@ -94,9 +94,9 @@ class ShowQueueMonitorController
             ->toArray();
 
         $partners = DB::table('users')
-            ->join('queue_monitor', 'queue_monitor.id_partner', '=', 'users.id')
-            ->select('users.*', 'queue_monitor.id_partner')
-            ->groupBy('queue_monitor.id_partner')
+            ->join('queue_apipartner_monitor', 'queue_apipartner_monitor.id_partner', '=', 'users.id')
+            ->select('users.*', 'queue_apipartner_monitor.id_partner')
+            ->groupBy('queue_apipartner_monitor.id_partner')
             ->get()
             ->toArray();
 

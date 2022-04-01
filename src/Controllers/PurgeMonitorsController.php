@@ -1,11 +1,11 @@
 <?php
 
-namespace romanzipp\QueueMonitor\Controllers;
+namespace celostad\QueueMonitor\Controllers;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use romanzipp\QueueMonitor\Models\Contracts\MonitorContract;
-use romanzipp\QueueMonitor\Services\QueueMonitor;
+use celostad\QueueMonitor\Models\Contracts\MonitorContract;
+use celostad\QueueMonitor\Services\QueueMonitor;
 
 class PurgeMonitorsController
 {

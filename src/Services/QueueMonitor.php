@@ -1,6 +1,6 @@
 <?php
 
-namespace romanzipp\QueueMonitor\Services;
+namespace celostad\QueueMonitor\Services;
 
 use Illuminate\Contracts\Queue\Job as JobContract;
 use Illuminate\Queue\Events\JobExceptionOccurred;
@@ -8,8 +8,8 @@ use Illuminate\Queue\Events\JobFailed;
 use Illuminate\Queue\Events\JobProcessed;
 use Illuminate\Queue\Events\JobProcessing;
 use Illuminate\Support\Carbon;
-use romanzipp\QueueMonitor\Models\Contracts\MonitorContract;
-use romanzipp\QueueMonitor\Traits\IsMonitored;
+use celostad\QueueMonitor\Models\Contracts\MonitorContract;
+use celostad\QueueMonitor\Traits\IsMonitored;
 use Throwable;
 
 class QueueMonitor
@@ -22,14 +22,14 @@ class QueueMonitor
     public static $loadMigrations = false;
 
     /**
-     * @var \romanzipp\QueueMonitor\Models\Contracts\MonitorContract
+     * @var \celostad\QueueMonitor\Models\Contracts\MonitorContract
      */
     public static $model;
 
     /**
      * Get the model used to store the monitoring data.
      *
-     * @return \romanzipp\QueueMonitor\Models\Contracts\MonitorContract
+     * @return \celostad\QueueMonitor\Models\Contracts\MonitorContract
      */
     public static function getModel(): MonitorContract
     {

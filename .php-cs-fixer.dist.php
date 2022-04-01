@@ -1,8 +1,8 @@
 <?php
 
-return romanzipp\Fixer\Config::make()
+return celostad\Fixer\Config::make()
     ->in(__DIR__)
     ->preset(
-        new romanzipp\Fixer\Presets\PrettyLaravel()
+        new celostad\Fixer\Presets\PrettyLaravel()
     )
     ->out();
