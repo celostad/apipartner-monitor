@@ -14,6 +14,9 @@ class CreateQueueMonitorTable extends Migration
             $table->string('job_id')->index();
             $table->string('name')->nullable();
             $table->string('queue')->nullable();
+            $table->string('id_partner')->nullable();
+            $table->string('uuid_job')->nullable();
+            $table->string('id_school')->nullable();
 
             $table->timestamp('started_at')->nullable()->index();
             $table->string('started_at_exact')->nullable();
