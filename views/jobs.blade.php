@@ -14,6 +14,9 @@
 </head>
 
 <body class="font-sans p-6 pb-64 bg-gray-100">
+    @php
+        $host = request()->getSchemeAndHttpHost();
+    @endphp
 
     <h1 class="mb-6 text-5xl text-blue-900 font-bold">
         @lang('ApiPartner Monitor')
@@ -45,11 +48,11 @@
 
             <div class="flex items-center my-2 -mx-2">
 
-                <div class="px-2 w-1/4">
+                <div class="px-2 w-1/5">
                     <label for="filter_show" class="block mb-1 text-xs uppercase font-semibold text-gray-600">
                         @lang('Show jobs')
                     </label>
-                    <select name="type" id="filter_show" class="w-full p-2 bg-gray-200 border-2 border-gray-300 rounded">
+                    <select name="type" id="filter_show" class="w-4/5 p-2 bg-gray-200 border-2 border-gray-300 rounded">
                         <option @if($filters['type'] === 'all') selected @endif value="all">@lang('All')</option>
                         <option @if($filters['type'] === 'running') selected @endif value="running">@lang('Running')</option>
                         <option @if($filters['type'] === 'failed') selected @endif value="failed">@lang('Failed')</option>
@@ -57,11 +60,11 @@
                     </select>
                 </div>
 
-                <div class="px-2 w-1/4">
+                <div class="px-2 w-1/5">
                     <label for="filter_queues" class="block mb-1 text-xs uppercase font-semibold text-gray-600">
                         @lang('Queues')
                     </label>
-                    <select name="queue" id="filter_queues" class="w-full p-2 bg-gray-200 border-2 border-gray-300 rounded">
+                    <select name="queue" id="filter_queues" class="w-4/5 p-2 bg-gray-200 border-2 border-gray-300 rounded">
                         <option value="all">All</option>
                         @foreach($queues as $queue)
                             <option @if($filters['queue'] === $queue) selected @endif value="{{ $queue }}">
@@ -70,12 +73,12 @@
                         @endforeach
                     </select>
                 </div>
-
-                <div class="px-2 w-1/4">
+                {{-- Partner - search --}}
+                <div class="px-2 w-1/5">
                     <label for="filter_partner" class="block mb-1 text-xs uppercase font-semibold text-gray-600">
                         @lang('Parceiro')
                     </label>
-                    <select name="partner" id="filter_partners" class="w-full p-2 bg-gray-200 border-2 border-gray-300 rounded">
+                    <select name="partner" id="filter_partners" class="w-4/5 p-2 bg-gray-200 border-2 border-gray-300 rounded">
                         <option value="all">All</option>
                         @foreach($partners as $partner)
                             <option @if($filters['partner'] == $partner->id) selected @endif  value="{{ $partner->id }}">
@@ -84,8 +87,20 @@
                         @endforeach
                     </select>
                 </div>
-
-                <div class="px-2 w-1/4">
+                {{-- id_school - search --}}
+                <div class="px-2 w-1/5">
+                    @foreach($id_schools as $id_school)
+                        @php
+                            @$id_school_post = $id_school->id_school;
+                        @endphp
+                    @endforeach
+                    <label for="filter_id_school" class="block mb-1 text-xs uppercase font-semibold text-gray-600">
+                        @lang('ID School')
+                    </label>
+                    <input name="id_school" id="filter_id_schools" class="w-2/5 p-2 bg-gray-200 border-2 border-gray-300 rounded" value="{{ @$id_school_post }}"></input>
+                </div>
+                {{-- JOB_ID - search --}}
+                <div class="px-2 w-1/5">
                     @foreach($uuid_jobs as $uuid_job)
                         @php
                             @$uuid_post = $uuid_job->uuid_job;
@@ -94,7 +109,7 @@
                     <label for="filter_uuid_job" class="block mb-1 text-xs uppercase font-semibold text-gray-600">
                         @lang('Job_id')
                     </label>
-                    <input name="uuid_job" id="filter_uuid_jobs" class="w-full p-2 bg-gray-200 border-2 border-gray-300 rounded" value="{{ @$uuid_post }}"></input>
+                    <input name="uuid_job" id="filter_uuid_jobs" class="w-5/6 p-2 bg-gray-200 border-2 border-gray-300 rounded" value="{{ @$uuid_post }}"></input>
 
                 </div>
 
@@ -186,7 +201,7 @@
                             {{ $job->getBaseName() }}
 
                             <span class="ml-1 text-xs text-gray-600">
-                                <a href="http://localhost:8080/horizon/jobs/{{ $status}}/{{ $job->job_id }}" target="_blank">
+                                <a href="{{ $host }}/horizon/jobs/{{ $status}}/{{ $job->job_id }}" target="_blank">
                                     #{{ $job->job_id }}
                                 </a>
                             </span>
@@ -207,7 +222,7 @@
 
                             <div class="text-xs">
                                 <span class="text-gray-600 font-medium">@lang('job_id'):</span>
-                                <span class="font-semibold"><a href="http://localhost:8080/horizon/jobs/{{ $status}}/{{ $job->job_id }}" target="_blank">{{ $job->uuid_job }}</a></span>
+                                <span class="font-semibold"><a href="{{ $host }}/horizon/jobs/{{ $status}}/{{ $job->job_id }}" target="_blank">{{ $job->uuid_job }}</a></span>
                             </div>
                             <div class="text-xs">
                                 <span class="text-gray-600 font-medium">@lang('Partner'):</span>
