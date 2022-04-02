@@ -27,6 +27,8 @@ class ShowQueueMonitorController
             'queue' => ['nullable', 'string'],
             'partner' => ['nullable', 'string'],
             'uuid_job' => ['nullable', 'string'],
+            'id_school' => ['nullable', 'integer'],
+
         ]);
 
         // força ALL a todos, caso a busca seja por JOB_ID
@@ -34,13 +36,22 @@ class ShowQueueMonitorController
             $data['type'] = 'all';
             $data['queue'] = 'all';
             $data['partner'] = 'all';
+            $data['id_school'] = "";
+        }
+
+        // Limpa campo JOB_ID caso ID School enviado
+        if (!empty($data['id_school'])) {
+            $data['uuid_job'] = "";
+            $data['type'] = 'all';
+            $data['queue'] = 'all';
         }
 
         $filters = [
-            'type' => $data['type'] ?? 'all',
-            'queue' => $data['queue'] ?? 'all',
-            'partner' => $data['partner'] ?? 'all',
-            'uuid_job' => $data['uuid_job'] ?? 'all',
+            'type'      => $data['type'] ?? 'all',
+            'queue'     => $data['queue'] ?? 'all',
+            'partner'   => $data['partner'] ?? 'all',
+            'uuid_job'  => $data['uuid_job'] ?? 'all',
+            'id_school' => $data['id_school'] ?? 'all',
         ];
 
         // dd($filters['type']);
@@ -71,6 +82,9 @@ class ShowQueueMonitorController
             })
             ->when(($uuid_job = $filters['uuid_job']) && 'all' !== $uuid_job, static function (Builder $builder) use ($uuid_job) {
                 $builder->where('uuid_job', $uuid_job);
+            })
+            ->when(($id_school = $filters['id_school']) && 'all' !== $id_school, static function (Builder $builder) use ($id_school) {
+                $builder->where('id_school', $id_school);
             })
             //----------------------------------
             ->ordered()
@@ -106,6 +120,12 @@ class ShowQueueMonitorController
             ->where('uuid_job', '=', $filters['uuid_job'])
             ->get();
 
+        $id_schools = QueueMonitor::getModel()
+            ->newQuery()
+            ->select('id_school')
+            ->where('id_school', '=', $filters['id_school'])
+            ->get();
+
         $metrics = null;
 
         if (config('queue-monitor.ui.show_metrics')) {
@@ -118,6 +138,7 @@ class ShowQueueMonitorController
             'queues' => $queues,
             'partners' => $partners,
             'uuid_jobs' => $uuid_jobs,
+            'id_schools' => $id_schools,
             'metrics' => $metrics,
         ]);
     }
