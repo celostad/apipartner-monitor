@@ -222,7 +222,13 @@
 
                             <div class="text-xs">
                                 <span class="text-gray-600 font-medium">@lang('job_id'):</span>
-                                <span class="font-semibold"><a href="{{ $host }}/horizon/jobs/{{ $status}}/{{ $job->job_id }}" target="_blank">{{ $job->uuid_job }}</a></span>
+
+                                    @if(@$status !="failed")
+                                        <span class="font-semibold"><a href="{{ $host }}/horizon/{{ $status}}/{{ $job->job_id }}" target="_blank">{{ $job->uuid_job }}</a></span>
+                                    @else
+                                        <span class="font-semibold"><a href="{{ $host }}/horizon/jobs/{{ $status}}/{{ $job->job_id }}" target="_blank">{{ $job->uuid_job }}</a></span>
+                                    @endif
+
                             </div>
                             <div class="text-xs">
                                 <span class="text-gray-600 font-medium">@lang('Partner'):</span>
@@ -231,6 +237,11 @@
                                         @if($partner->id == $job->id_partner) {{$partner->name}} @endif
                                      @endforeach
                                 </span>
+                            </div>
+                            {{-- Tamanho do Json --}}
+                            <div class="text-xs">
+                                <span class="text-gray-600 font-medium">@lang('Tamanho Json'):</span>
+                                <span class="font-semibold">{{ $job->json_size }}</span>
                             </div>
 
 
